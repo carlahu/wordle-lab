@@ -38,8 +38,23 @@ public class wordle{
       System.out.println("Error, need 5 letter guesses.");
       userInput = Input.nextLine();
     }
-    if(userInput.length() == 5){
-     return guess;
+    if(userInput.length() == 5){  
+      for(int j = 0; j < 5; j++){
+        String g = word_of_day.substring(j, j+1);
+                    while(guess.contains(g)){
+                        if(!guess[j].equals(""))
+                            break;
+                        guess[j] = "~ ";
+                        guess = word_of_day.substring(0, guess.indexOf(g)) + "_" + word_of_day.substring(guess.indexOf(g) + 1);
+                    }
+                    if (guess[j].equals(""))
+                        guess[j] = "_ ";
+                }
+                for(String i : guess)
+                    System.out.print(i);
+                System.out.println();
+            }
+      }
     }
     
   }
